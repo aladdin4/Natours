@@ -1,0 +1,14 @@
+/* 1st we normalize the document */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// we set the root font to control responsiveness with rem units
+// i.e defining what 1rem is
+html {
+  font-size: 62.5%;
+}
