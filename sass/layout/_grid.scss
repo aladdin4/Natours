@@ -1,0 +1,52 @@
+.row {
+  background-color: rgb(184, 215, 255);
+  max-width: $grid-width;
+  margin: 0 auto;
+
+  &:not(&:last-child) {
+    margin-bottom: $vertical-gutter;
+  }
+
+  //  we will add basic definitions to all the col-x classes
+  // we will do so using the attribute selector
+
+  // note: we use ^= to match beginning , *= to match anywhere, $= to match endings
+  [class^="col-"] {
+    float: left;
+    background-color: rgb(216, 255, 211);
+    &:not(:last-child) {
+      margin-right: $horizontal-gutter;
+    }
+  }
+
+  // calculating the width is straightforward: (100% of the row width - (number of gutters * their width)) / number of cols
+
+  .col-1-of-2 {
+    // calc() syntax with sass variables isn't natural
+    width: calc((100% - #{$horizontal-gutter}) / 2);
+  }
+  @include clearfix;
+
+  .col-1-of-3 {
+    width: calc((100% - (#{$horizontal-gutter} * 2)) / 3);
+  }
+  .col-2-of-3 {
+    width: calc(
+      (((100% - (#{$horizontal-gutter} * 2)) / 3) * 2) + #{$horizontal-gutter}
+    );
+  }
+  .col-1-of-4 {
+    width: calc((100% - (#{$horizontal-gutter} * 3)) / 4);
+  }
+  .col-2-of-4 {
+    width: calc(
+      (((100% - (#{$horizontal-gutter} * 3)) / 4) * 2) + #{$horizontal-gutter}
+    );
+  }
+  .col-3-of-4 {
+    width: calc(
+      (((100% - (#{$horizontal-gutter} * 3)) / 4) * 3) +
+        (#{$horizontal-gutter} * 2)
+    );
+  }
+}
